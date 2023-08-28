@@ -1,0 +1,730 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_VIKAS_PC",
+      "label": "vikas_pc",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "postgres",
+      "pluginName": "PostgreSQL"
+    },
+    {
+      "name": "DS_GOOGLE_SHEETS",
+      "label": "Google Sheets",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "grafana-googlesheets-datasource",
+      "pluginName": "Google Sheets"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.5.2"
+    },
+    {
+      "type": "datasource",
+      "id": "grafana-googlesheets-datasource",
+      "name": "Google Sheets",
+      "version": "1.2.0"
+    },
+    {
+      "type": "panel",
+      "id": "marcusolsson-calendar-panel",
+      "name": "Calendar",
+      "version": "1.3.0"
+    },
+    {
+      "type": "datasource",
+      "id": "postgres",
+      "name": "PostgreSQL",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "dashboard",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Hardware",
+      "tooltip": "Hardware",
+      "type": "link",
+      "url": "http://localhost:3000/d/X0B3ZDB4z/hardware?orgId=1"
+    },
+    {
+      "asDropdown": false,
+      "icon": "dashboard",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Networking",
+      "tooltip": "Networking",
+      "type": "link",
+      "url": "http://localhost:3000/d/yQ5rZDfVz/networking?orgId=1"
+    },
+    {
+      "asDropdown": false,
+      "icon": "dashboard",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Software",
+      "tooltip": "Software",
+      "type": "link",
+      "url": "http://localhost:3000/d/MPUmMDf4k/software?orgId=1"
+    },
+    {
+      "asDropdown": false,
+      "icon": "dashboard",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": false,
+      "title": "Manpower",
+      "tooltip": "Manpower",
+      "type": "link",
+      "url": "http://localhost:3000/d/_YyvMvf4k/manpower?orgId=1"
+    }
+  ],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_VIKAS_PC}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "Offline": {
+                  "color": "red",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 14,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "annotations": false,
+        "autoScroll": false,
+        "colorField": "status",
+        "colors": "event",
+        "displayTime": false,
+        "labelFields": [
+          "institute",
+          "module"
+        ],
+        "quickLinks": false,
+        "textField": "status",
+        "timeField": "date_action"
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_VIKAS_PC}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT * FROM \"dashboard\".\"golive\"\r\nWHERE institute= '$institute'",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "type": "marcusolsson-calendar-panel"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_VIKAS_PC}"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 10,
+        "x": 14,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<h2>\n  <b><center> ${institute} GoLive Status</center> </b>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_VIKAS_PC}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "Offline": {
+                  "color": "semi-dark-red",
+                  "index": 1
+                },
+                "Online": {
+                  "color": "semi-dark-green",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "noValue": "No record found!",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#c6c6c6",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Date"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 120
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Institute"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 130
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Module"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 110
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 10,
+        "x": 14,
+        "y": 2
+      },
+      "id": 7,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_VIKAS_PC}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "-- SELECT TO_CHAR(date_action::date, 'DD-Mon-YYYY'), *\r\n\r\nSELECT TO_CHAR(date_action::date, 'DD-Mon-YYYY'), * FROM \"dashboard\".\"golive\"\r\nWHERE institute = '$institute'\r\nAND date_action BETWEEN TO_CHAR($__timeFrom()::timestamp, 'YYYY-MM-DD') AND TO_CHAR($__timeTo()::timestamp, 'YYYY-MM-DD')",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "category": true,
+              "date_action": true,
+              "district": true,
+              "f7": true,
+              "f8": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "institute": "Institute",
+              "module": "Module",
+              "status": "Status",
+              "to_char": "Date"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_VIKAS_PC}"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 10,
+        "x": 14,
+        "y": 5
+      },
+      "id": 11,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<h2>\n  <b><center>Upcoming:</center> </b>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_VIKAS_PC}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "inspect": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "Offline": {
+                  "color": "semi-dark-red",
+                  "index": 1
+                },
+                "Online": {
+                  "color": "semi-dark-green",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#cccccc",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Date"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 110
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 10,
+        "x": 14,
+        "y": 7
+      },
+      "id": 9,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "${DS_VIKAS_PC}"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT TO_CHAR(CAST(date_action AS DATE), 'DD-Mon-YY'), institute, module, status\r\nFROM (SELECT date_action, institute, module, status FROM \"dashboard\".\"golive\"\r\nWHERE date_action> (SELECT TO_CHAR(CURRENT_DATE, 'YYYY-MM-DD'))\r\nORDER BY date_action)\r\nWHERE date_action ~ '^\\d{4}-\\d{2}-\\d{2}$';",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "date_action": "Date",
+              "institute": "Institute",
+              "module": "Module",
+              "status": "Status",
+              "to_char": "Date"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "${DS_VIKAS_PC}"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 8,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<h1>\n  <b><center> Overall GoLive Status</center> </b>\n</h1>",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "grafana-googlesheets-datasource",
+        "uid": "${DS_GOOGLE_SHEETS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "Offline": {
+                  "color": "red",
+                  "index": 0
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 22,
+        "x": 1,
+        "y": 15
+      },
+      "id": 5,
+      "options": {
+        "annotations": false,
+        "autoScroll": false,
+        "colorField": "Status",
+        "colors": "event",
+        "displayTime": false,
+        "labelFields": [
+          "Module",
+          "Institute"
+        ],
+        "quickLinks": false,
+        "textField": "Status"
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
+        {
+          "cacheDurationSeconds": 300,
+          "datasource": {
+            "type": "grafana-googlesheets-datasource",
+            "uid": "${DS_GOOGLE_SHEETS}"
+          },
+          "refId": "A",
+          "spreadsheet": "1xooNmefqGDaOKT3q9Tr5V3KtrS9rbfTvoN4t2N9YiB4"
+        }
+      ],
+      "type": "marcusolsson-calendar-panel"
+    }
+  ],
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "postgres",
+          "uid": "${DS_VIKAS_PC}"
+        },
+        "definition": "SELECT UNIQUE(category) FROM \"dashboard\".\"golive\"",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "category",
+        "options": [],
+        "query": "SELECT UNIQUE(category) FROM \"dashboard\".\"golive\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "postgres",
+          "uid": "${DS_VIKAS_PC}"
+        },
+        "definition": "SELECT UNIQUE(institute) from \"dashboard\".\"golive\"\nWHERE category = '$category'",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Institute",
+        "multi": false,
+        "name": "institute",
+        "options": [],
+        "query": "SELECT UNIQUE(institute) from \"dashboard\".\"golive\"\nWHERE category = '$category'",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-90d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h"
+    ]
+  },
+  "timezone": "",
+  "title": "GoLive Status",
+  "uid": "SlifuhP4k",
+  "version": 30,
+  "weekStart": "monday"
+}
