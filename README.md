@@ -36,6 +36,15 @@ This panel makes use of the 'Flowcharting' visualization to explore data represe
 ![image](https://github.com/saymeowmeow/eHMIS/assets/73341271/37fa3e5f-516e-4eb2-b66b-8c6545670977)
 https://snapshots.raintank.io/dashboard/snapshot/ZfuOKebzc8CjJX6KjV0OlfcGUFLhdm20
 
+PART 2
+Grafana Snapshot: https://snapshots.raintank.io/dashboard/snapshot/Bk2ad64SAZKmyWegIIh5Vr7J8ebHM8X2
+![image](https://github.com/saymeowmeow/eHMISGrafana/assets/73341271/f7441134-0ec4-48e6-bc0d-919183c746c5)
+![image](https://github.com/saymeowmeow/eHMISGrafana/assets/73341271/a5490397-1a14-4e23-a122-b9b5df4ccb7e)
+![image](https://github.com/saymeowmeow/eHMISGrafana/assets/73341271/761ba1d4-e37f-4c3d-b896-132b3dbe8b94)
+
+
+
+
 
 
 
